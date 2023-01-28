@@ -1,7 +1,5 @@
 #include "print_helpers.h"
-
 #include "print_int_helpers.h"
-
 #define num_len(n, num_width)                                                 \
 	do {                                                                       \
 		if ((n) < 0)                                                           \
@@ -42,7 +40,7 @@ int handle_width(specifier_t *spec, int num, short int nums,
 
 /**
  * handle_precision - handle precision
- * @spec: specifier object
+ * @spec: specifier objectiiii
  * @width: width
  *
  *  Return: length of bytes written
@@ -86,12 +84,13 @@ int handle_sign(specifier_t *spec, int num, short int nums, long int numl,
  *
  *  Return: length of bytes written
  */
-int handle_left_align(specifier_t *spec, int num, short int nums, long int numl,
-	unsigned int width)
+int handle_left_align(specifier_t *spec, int num, short int nums,
+		long int numl, unsigned int width)
 {
 	int len = 0;
 
-	if (spec->flags & FLAG_BLANK && spec->width > width && (num >= 0 || nums >= 0 || numl >= 0))
+	if (spec->flags & FLAG_BLANK && spec->width > width
+			&& (num >= 0 || nums >= 0 || numl >= 0))
 			len += print_space(1);
 	len += handle_sign(spec, num, nums, numl, width);
 	if (spec->flags & FLAG_PRECISION)
