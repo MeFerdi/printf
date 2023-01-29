@@ -81,15 +81,15 @@ int handle_sign(specifier_t *spec, int num, short int nums, long int numl,
  * @nums: num short
  * @numl: num long
  * @width: width
- *
- *  Return: length of bytes written
+ * Return: length of bytes written
  */
 int handle_left_align(specifier_t *spec, int num, short int nums,
 		long int numl, unsigned int width)
 {
 	int len = 0;
 
-	if (spec->flags & FLAG_BLANK && spec->width > width
+	{
+		if (spec->flags & FLAG_BLANK && spec->width > width
 			&& (num >= 0 || nums >= 0 || numl >= 0))
 			len += print_space(1);
 	len += handle_sign(spec, num, nums, numl, width);
@@ -104,6 +104,7 @@ int handle_left_align(specifier_t *spec, int num, short int nums,
 		width++;
 	len += handle_print(spec, num, nums, numl);
 	spec->flags = 0;
+	}
 	len += handle_width(spec, num, nums, numl, width);
 	return (len);
 }
